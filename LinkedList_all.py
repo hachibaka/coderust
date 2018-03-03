@@ -7,18 +7,15 @@ class Node():
 class LinkedList():
     def __init__(self):
         self.head = None
+        self.lastnode = None
 
     def addNode(self,value):
         if not self.head:
             self.head = Node(value)
+            self.lastnode = self.head
         else:
-            node = self.head
-            while node:
-                if not node.next:
-                    break
-                else:
-                    node = node.next
-            node.next = Node(value)
+            self.lastnode.next = Node(value)
+            self.lastnode = self.lastnode.next
         return self.head
 
     def reverse_list(self):
@@ -27,12 +24,14 @@ class LinkedList():
 
         nextnode = self.head.next
         prevnode = self.head
-
+        self.head.next = None
+        i = 0
         while nextnode:
             temp = nextnode
             nextnode = nextnode.next
             temp.next = prevnode
             prevnode = temp
+            i += 1
         self.head = prevnode
         return self.head
 
@@ -51,6 +50,15 @@ class LinkedList():
                 node = node.next
         return self.head
 
+    def __len__(self):
+        i = 0
+        node = self.head
+        while node:
+            node = node.next
+            i += 1
+
+        return i
+
     def removeduplicates(self):
         dups = []
         node = self.head
@@ -60,8 +68,9 @@ class LinkedList():
                 prev_node.next = node.next
             else:
                 dups.append(node.value)
-            prev_node = node
+                prev_node = node
             node = node.next
+
         return self.head
 
     def deletefromlast(self, key):
@@ -89,22 +98,66 @@ class LinkedList():
                 node = node.next
         return self.head
 
+    def insertion_sort(self):
+        sortednode = None
+        node = self.head
+        while node:
+            nextnode = node.next
+            if not sortednode:
+                sortednode = node
+                sortednode.next = None
+            elif node.value <= sortednode.value:
+                node.next = sortednode
+                sortednode = node
+            else:
+                tempnode = sortednode
+                prevnode = None
+                while tempnode and tempnode.value < node.value:
+                    prevnode = tempnode
+                    tempnode = tempnode.next
+                prevnode.next = node
+                node.next = tempnode
+            node = nextnode
+        self.head = sortednode
+
     def __str__(self):
         node = self.head
         output = []
+        i = 0
         while node:
             output.append(node.value)
             node = node.next
-        return '-->'.join(map(str,output))
+        return "length of linkedlist is " + str(len(output)) + "\n"+ '-->'.join(map(str,output))
 
-linkedlist = LinkedList()
-for _ in range(17):
-    linkedlist.addNode(random.randint(-100,100))
-print(linkedlist)
-#linkedlist.removeduplicates()
+linkedlist1 = LinkedList()
+for _ in range(20):
+    linkedlist1.addNode(random.randint(-100,100))
+
+linkedlist1.removeduplicates()
 #linkedlist.deleteNode(34)
-linkedlist.deletefromlast(34)
+#linkedlist.deletefromlast(34)
+#linkedlist.reverse_list()
+#print(linkedlist)
+linkedlist1.insertion_sort()
+print(linkedlist1)
 
-print(linkedlist)
-linkedlist.reverse_list()
-print(linkedlist)
+
+linkedlist2 = LinkedList()
+for _ in range(20):
+    linkedlist2.addNode(random.randint(-100,100))
+
+linkedlist2.removeduplicates()
+#linkedlist.deleteNode(34)
+#linkedlist.deletefromlast(34)
+#linkedlist.reverse_list()
+#print(linkedlist)
+linkedlist2.insertion_sort()
+print(linkedlist2,len(linkedlist2))
+
+def intersect(l1, l2):
+    if not l1.head or not l2.head:
+        return None
+    match = None
+    m, n = len(l1), len(l2)
+    i = j = 0
+    pass
