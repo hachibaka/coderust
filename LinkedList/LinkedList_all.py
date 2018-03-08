@@ -129,35 +129,17 @@ class LinkedList():
             node = node.next
         return "length of linkedlist is " + str(len(output)) + "\n"+ '-->'.join(map(str,output))
 
-linkedlist1 = LinkedList()
-for _ in range(20):
-    linkedlist1.addNode(random.randint(-100,100))
+def create_list(n):
+    linkedlist = LinkedList()
+    for _ in range(n):
+        linkedlist.addNode(random.randint(-500,500))
+    linkedlist.removeduplicates()
+    linkedlist.insertion_sort()
+    return linkedlist
 
-linkedlist1.removeduplicates()
-#linkedlist.deleteNode(34)
-#linkedlist.deletefromlast(34)
-#linkedlist.reverse_list()
-#print(linkedlist)
-linkedlist1.insertion_sort()
-print(linkedlist1)
+if __name__ == '__main__':
 
-
-linkedlist2 = LinkedList()
-for _ in range(20):
-    linkedlist2.addNode(random.randint(-100,100))
-
-linkedlist2.removeduplicates()
-#linkedlist.deleteNode(34)
-#linkedlist.deletefromlast(34)
-#linkedlist.reverse_list()
-#print(linkedlist)
-linkedlist2.insertion_sort()
-print(linkedlist2,len(linkedlist2))
-
-def intersect(l1, l2):
-    if not l1.head or not l2.head:
-        return None
-    match = None
-    m, n = len(l1), len(l2)
-    i = j = 0
-    pass
+    linkedlist1 = create_list(20)
+    linkedlist2 = create_list(20)
+    print(linkedlist1)
+    print(linkedlist2)
