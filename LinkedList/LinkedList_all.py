@@ -98,6 +98,14 @@ class LinkedList():
                 node = node.next
         return self.head
 
+    def split_lists(self,headnode):
+        pass
+
+    def merge_sort(self):
+        sortednode = None
+
+        return sortednode
+
     def insertion_sort(self):
         sortednode = None
         node = self.head
