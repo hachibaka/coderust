@@ -147,7 +147,7 @@ def create_list(n):
 
 if __name__ == '__main__':
 
-    linkedlist1 = create_list(20)
-    linkedlist2 = create_list(20)
+    linkedlist1 = create_list(200)
+    linkedlist2 = create_list(200)
     print(linkedlist1)
     print(linkedlist2)

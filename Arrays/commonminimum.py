@@ -9,6 +9,7 @@ def common_minimum(a,b,c):
         if a[i] == b[j] and b[j] == c[k]:
             return a[i]
         maxval = max(a[i],b[j],c[k])
+        print(maxval)
 
         if maxval == a[i]:
             if a[i] != b[j]:
@@ -30,7 +31,7 @@ def common_minimum(a,b,c):
 
 a = [-4,-2,-1,0,2,6,11,11]
 b = [-6,-5,-3,-1,4,8,9,10,11]
-c = [-8,-1,2,3,4,8,9,10,11]
+c = [-8,-3,2,3,4,8,9,10,11]
 
 answer = common_minimum(a,b,c)
 if not answer:

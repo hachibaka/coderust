@@ -11,7 +11,7 @@ def partition(a,low,high):
     i = low + 1
     j = high
     pivot = a[low]
-    print(a)
+    #print(a)
     while i < j:
         while i <= j and a[i] < pivot:
             i += 1
@@ -24,8 +24,9 @@ def partition(a,low,high):
         else:
             break
     a[low],a[j] = a[j], a[low]
-    print(a)
+    #print(a)
     return j
 
-a = [54,26,93,17,77,31,44,55,20]
+a = [54,26,93,17,77,31,44,55,20]*1000
 quicksort(a)
+print(a)
