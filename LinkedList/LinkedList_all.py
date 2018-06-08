@@ -101,8 +101,16 @@ class LinkedList():
     def split_lists(self,headnode):
         pass
 
+    def split_half(self,first_second):
+        if not self.head:
+            first_second.first = None
+            first_second.second = None
+            return  
+
     def merge_sort(self):
-        sortednode = None
+        if not self.head or not self.head.next:
+            return self.head
+        first_second = pair()
 
         return sortednode
 
