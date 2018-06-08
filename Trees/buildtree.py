@@ -1,8 +1,9 @@
 from collections import deque
 import random
+
 class TreeNode:
-    def __init__(self,value):
-        self.value = value
+    def __init__(self,data):
+        self.data = data
         self.right = None
         self.left = None
         self.level = 0
@@ -23,7 +24,7 @@ class BinaryTree:
             while tempnode:
                 prev_node = tempnode
                 level += 1
-                if newvalue <= tempnode.value:
+                if newvalue <= tempnode.data:
                     tempnode = tempnode.left
 
                     left = True
@@ -54,9 +55,9 @@ class BinaryTree:
         while queue:
             node = queue.popleft()
             if node.level in treelevel:
-                treelevel[node.level].append(node.value)
+                treelevel[node.level].append(node.data)
             else:
-                treelevel[node.level] = [node.value]
+                treelevel[node.level] = [node.data]
 
             if node.left:
                 queue.append(node.left)
@@ -69,7 +70,8 @@ class BinaryTree:
             output.append("-->".join(map(str,treelevel[i])))
         return "\n".join(output)
 
-btree = BinaryTree()
-for _ in range(20):
-    btree.insert(random.randint(1,100))
-print(btree)
+if __name__ == "__main__":
+    btree = BinaryTree()
+    for _ in range(20):
+        btree.insert(random.randint(1,100))
+    print(btree)
