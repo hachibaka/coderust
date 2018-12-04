@@ -35,6 +35,8 @@ class LinkedList():
         self.head = prevnode
         return self.head
 
+    
+
     def deleteNode(self, key):
         node = self.head
         prev_node = None
@@ -145,12 +147,12 @@ class LinkedList():
             node = node.next
         return "length of linkedlist is " + str(len(output)) + "\n"+ '-->'.join(map(str,output))
 
-def create_list(n):
+def create_list(n, sort=True):
     linkedlist = LinkedList()
     for _ in range(n):
         linkedlist.addNode(random.randint(-500,500))
     linkedlist.removeduplicates()
-    linkedlist.insertion_sort()
+    if sort: linkedlist.insertion_sort()
     return linkedlist
 
 if __name__ == '__main__':
